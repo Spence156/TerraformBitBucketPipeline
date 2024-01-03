@@ -1,6 +1,10 @@
 # Terraform BitBucket Pipeline
 This repo contains an example setup for using BitBucket to run Terraform to deploy Microsoft Azure Resources using a service principal with a client secret.
 
+## Outcome
+
+The outcome of this process will be to have a pipeline trigger on every branch update to validate and plan the changes and then on the main branch when it is updated to run the validate steps again but also offer a manual option to trigger the deployment.
+
 ## Pre-Requisites
 
 1) You must have the Azure CLI installed on the machine (You can use the GUI but the instructions here will not cover that)
