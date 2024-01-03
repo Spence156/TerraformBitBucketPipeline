@@ -68,4 +68,4 @@ The process for setting this up is as follows:
 
 3) Setup build pipeline.
 
-Add the [bitbucket-pipelines.yml](https://github.com/Spence156/TerraformBitBucketPipeline/blob/eb9150105f13100473eb784700f4663222a61683/bitbucket-pipelines.yml) to the git repo.
+Add the [bitbucket-pipelines.yml](https://github.com/Spence156/TerraformBitBucketPipeline/blob/dd4bed45aa55ccb302597dbfa73b5962b19b7b28/bitbucket-pipelines.yml) to the git repo.
