@@ -1,0 +1,42 @@
+image: hashicorp/terraform
+
+pipelines:
+  default:
+      - parallel:
+        - step:
+            name: Terraform Validate
+            script:
+              - terraform init
+              - terraform validate
+              - terraform plan -out out-overall.plan
+            artifacts:
+              - out-overall.plan
+            deployment: Validation
+        - step:
+            name: Security Scan
+            script:
+              # Run a security scan for sensitive data.
+              - pipe: atlassian/git-secrets-scan:0.5.1
+  branches:
+    main:
+      - parallel:
+        - step:
+            name: Terraform Validate
+            script:
+              - terraform init
+              - terraform validate
+              - terraform plan -out out-overall.plan
+            artifacts:
+              - out-overall.plan
+        - step:
+            name: Security Scan
+            script:
+              # Run a security scan for sensitive data.
+              - pipe: atlassian/git-secrets-scan:0.5.1
+      - step:
+          name: Deploy Changes
+          deployment: Production
+          trigger: manual
+          script:
+            - terraform init
+            - terraform apply -auto-approve
